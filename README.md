@@ -133,6 +133,7 @@ Add a new [public](https://docs.microsoft.com/en-us/dotnet/csharp/programming-gu
     * The class must have a constructor with `authorName`, `title`, `publisher`, `isbn`, `published`, `bookBinding`, `price`, `currency` and `amount` parameters.
     * The class must have a constructor with `authorName`, `isni`, `title`, `publisher`, `isbn`, `published`, `bookBinding`, `price`, `currency` and `amount` parameters.
     * The `authorName`, `isni`, `title`, `publisher`, `isbn`, `bookBinding` and `currency` parameters must have the `string` type. The `published` parameter must have the nullable `DateTime` type. The `price` parameter must have a `decimal` type. The `amount` parameter must have the `int` type.
+    * The default value for `bookBinding` constructor parameter is an empty string. The default value for `currency` constructor parameter is "USD".
     * Constructors must use the `ValidateIsni` method to validate an `isni` argument.
     * Constructors must use the `ValidateIsbn` and `ValidateIsbnChecksum` methods to validate an `isbn` argument and ISBN-10 checksum.
     * Constructors must throw an `ArgumentException` if a `isni` or `isbn` argument is not valid.
@@ -141,7 +142,7 @@ Add a new [public](https://docs.microsoft.com/en-us/dotnet/csharp/programming-gu
     * To remove the code duplication, use the [constructor chaining](https://www.google.com/search?q=constructor+chaining+c%23) approach.
 * Instance Methods
     * The class must have the `GetIsniUri` method that must return an [Uri](https://docs.microsoft.com/en-us/dotnet/api/system.uri) object that is initialized with the link to an author page on the [isni.org](https://isni.org/) website. If an ISNI is not set, the method must throw an `InvalidOperationException`.
-    * The class must have the `GetSearchUri` method that must return an `Uri` object that is initialized with the link to a relevant search page on the [isbnsearch.org](https://isbnsearch.org/) website.
+    * The class must have the `GetIsbnSearchUri` method that must return an `Uri` object that is initialized with the link to a relevant search page on the [isbnsearch.org](https://isbnsearch.org/) website.
     * The class must override [ToString](https://docs.microsoft.com/en-us/dotnet/api/system.object.tostring) method to return the string representation of the `BookStoreItem` object.
         * If an ISNI is not set, the `ToString` method must return the [comma-separated line](https://en.wikipedia.org/wiki/Comma-separated_values) with `title`, `authorName`, `price`, `currency` and `amount` values - "Complete Stories and Poems of Edgar Allan Poe, Edgar Allan Poe, ISNI IS NOT SET, 0.00 USD, 0".
         * If an ISNI is set, the `ToString` method must return the comma-separated line with `title`, `authorName`, `isni`, `price`, `currency` and `amount` values - "Complete Stories and Poems of Edgar Allan Poe, Edgar Allan Poe, 0000000121354025, 0.00 USD, 0".

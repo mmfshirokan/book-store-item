@@ -119,9 +119,9 @@ namespace BookStoreItem
         // TODO Add an instance method.
 
         /// <summary>
-        /// Gets an <see cref="Uri"/> to the publication page on the bookfinder.com website.
+        /// Gets an <see cref="Uri"/> to the publication page on the isbnsearch.org website.
         /// </summary>
-        /// <returns>an <see cref="Uri"/> to the publication page on the bookfinder.com website.</returns>
+        /// <returns>an <see cref="Uri"/> to the publication page on the isbnsearch.org website.</returns>
         // TODO Add an instance method.
 
         /// <summary>
