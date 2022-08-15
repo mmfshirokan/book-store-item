@@ -138,7 +138,7 @@ Add a new [public](https://docs.microsoft.com/en-us/dotnet/csharp/programming-gu
     * Constructors must use the `ValidateIsbn` and `ValidateIsbnChecksum` methods to validate an `isbn` argument and ISBN-10 checksum.
     * Constructors must throw an `ArgumentException` if a `isni` or `isbn` argument is not valid.
     * Constructors must use the `ThrowExceptionIfCurrencyIsNotValid` methods to throw an `ArgumentException` if a `currency` argument is not valid.
-    * Add a [guard clause](https://www.google.com/search?q=guard+clause) to throw an [ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentnullexception) if an `authorName`, `title` or `publisher` argument contains only white-space characters.
+    * Add a [guard clause](https://www.google.com/search?q=guard+clause) to throw an [ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentnullexception) if an `authorName`, `title` or `publisher` argument is an empty string or has only white-space characters.
     * To remove the code duplication, use the [constructor chaining](https://www.google.com/search?q=constructor+chaining+c%23) approach.
 * Instance Methods
     * The class must have the `GetIsniUri` method that must return an [Uri](https://docs.microsoft.com/en-us/dotnet/api/system.uri) object that is initialized with the link to an author page on the [isni.org](https://isni.org/) website. If an ISNI is not set, the method must throw an `InvalidOperationException`.
