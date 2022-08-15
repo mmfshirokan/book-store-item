@@ -147,6 +147,7 @@ Add a new [public](https://docs.microsoft.com/en-us/dotnet/csharp/programming-gu
         * If an ISNI is not set, the `ToString` method must return the [comma-separated line](https://en.wikipedia.org/wiki/Comma-separated_values) with `title`, `authorName`, `price`, `currency` and `amount` values - "Complete Stories and Poems of Edgar Allan Poe, Edgar Allan Poe, ISNI IS NOT SET, 0.00 USD, 0".
         * If an ISNI is set, the `ToString` method must return the comma-separated line with `title`, `authorName`, `isni`, `price`, `currency` and `amount` values - "Complete Stories and Poems of Edgar Allan Poe, Edgar Allan Poe, 0000000121354025, 0.00 USD, 0".
         * If a string representation of a price value contains a comma, wrap the price string with quotation marks - "\"123,456,789.12 EUR\"".
+        * The `ToString` method must use invariant culture for string formatting.
 
 
 ### Questions
