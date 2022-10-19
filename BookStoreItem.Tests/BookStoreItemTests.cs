@@ -420,7 +420,7 @@ namespace BookStoreItem.Tests
 
             // Assert
             Assert.That(uri, Is.Not.Null);
-            Assert.That(uri.AbsoluteUri, Is.EqualTo(expectedResult));
+            Assert.That(uri!.AbsoluteUri, Is.EqualTo(expectedResult));
         }
 
         [TestCaseSource(nameof(ToStringData))]
