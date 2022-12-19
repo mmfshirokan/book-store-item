@@ -470,7 +470,7 @@ namespace BookStoreItem.Tests
             Assert.AreEqual(0, this.classType!.GetProperties(BindingFlags.Instance | BindingFlags.NonPublic).Length);
 
             Assert.AreEqual(0, this.classType!.GetMethods(BindingFlags.Static | BindingFlags.Public | BindingFlags.DeclaredOnly).Length);
-            Assert.AreEqual(4, this.classType!.GetMethods(BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.DeclaredOnly).Length);
+            Assert.AreEqual(6, this.classType!.GetMethods(BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.DeclaredOnly).Length);
 
             Assert.AreEqual(19, this.classType!.GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly).Length);
             Assert.AreEqual(3, this.classType!.GetMethods(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.DeclaredOnly).Length);

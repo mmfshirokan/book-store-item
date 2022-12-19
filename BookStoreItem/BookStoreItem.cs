@@ -22,7 +22,7 @@ namespace BookStoreItem
         /// <param name="publisher">A book publisher.</param>
         /// <param name="isbn">A book ISBN.</param>
         public BookStoreItem(string authorName, string title, string publisher, string isbn)
-            : this(authorName, title, publisher, isbn, null)
+            : this(authorName, null, title, publisher, isbn)
         {
         }
 
@@ -34,8 +34,8 @@ namespace BookStoreItem
         /// <param name="title">A book title.</param>
         /// <param name="publisher">A book publisher.</param>
         /// <param name="isbn">A book ISBN.</param>
-        public BookStoreItem(string authorName, string title, string publisher, string isbn, string? isni)
-            : this(authorName, title, publisher, isbn, isni, null, string.Empty, 0.0m, "USD", 0)
+        public BookStoreItem(string authorName, string? isni, string title, string publisher, string isbn)
+            : this(authorName, isni, title, publisher, isbn, null, string.Empty, 0.0m, "USD", 0)
         {
         }
 
@@ -52,7 +52,7 @@ namespace BookStoreItem
         /// <param name="currency">A price currency.</param>
         /// <param name="amount">An amount of books in the store's stock.</param>
         public BookStoreItem(string authorName, string title, string publisher, string isbn, DateTime? published, string bookBinding, decimal price, string currency, int amount)
-            : this(authorName, title, publisher, isbn, null, published, bookBinding, price, currency, amount)
+            : this(authorName, null, title, publisher, isbn, published, bookBinding, price, currency, amount)
         {
         }
 
@@ -69,7 +69,7 @@ namespace BookStoreItem
         /// <param name="price">An amount of money that a book costs.</param>
         /// <param name="currency">A price currency.</param>
         /// <param name="amount">An amount of books in the store's stock.</param>
-        public BookStoreItem(string authorName, string title, string publisher, string isbn, string? isni, DateTime? published, string bookBinding, decimal price, string currency, int amount)
+        public BookStoreItem(string authorName, string? isni, string title, string publisher, string isbn, DateTime? published, string bookBinding, decimal price, string currency, int amount)
         {
             if (string.IsNullOrWhiteSpace(authorName))
             {
@@ -251,14 +251,19 @@ namespace BookStoreItem
         /// <returns>A string that represents the current object.</returns>
         public override string ToString()
         {
-            if (this.Price > 1000)
+            if (this.Price > 1000 && this.Isni == null)
             {
-                return $"{this.Title}, {this.AuthorName}, ISNI IS NOT SET, ".ToString(CultureInfo.InvariantCulture) + "\"" + this.Price.ToString("N", CultureInfo.InvariantCulture) + "\"" + $" {this.Currency}, {this.Amount}".ToString(CultureInfo.InvariantCulture);
+                return $"{this.Title}, {this.AuthorName}, ISNI IS NOT SET, ".ToString(CultureInfo.InvariantCulture) + "\"" + this.Price.ToString("N", CultureInfo.InvariantCulture) + $" {this.Currency}\", {this.Amount}".ToString(CultureInfo.InvariantCulture);
             }
 
             if (this.Isni == null)
             {
                 return $"{this.Title}, {this.AuthorName}, ISNI IS NOT SET, ".ToString(CultureInfo.InvariantCulture) + this.Price.ToString("N", CultureInfo.InvariantCulture) + $" {this.Currency}, {this.Amount}".ToString(CultureInfo.InvariantCulture);
+            }
+
+            if (this.Price > 1000)
+            {
+                return $"{this.Title}, {this.AuthorName}, {this.Isni}, ".ToString(CultureInfo.InvariantCulture) + "\"" + this.Price.ToString("N", CultureInfo.InvariantCulture) + $" {this.Currency}\", {this.Amount}".ToString(CultureInfo.InvariantCulture);
             }
 
             return $"{this.Title}, {this.AuthorName}, {this.Isni}, ".ToString(CultureInfo.InvariantCulture) + this.Price.ToString("N", CultureInfo.InvariantCulture) + $" {this.Currency}, {this.Amount}".ToString(CultureInfo.InvariantCulture);
